@@ -1,10 +1,17 @@
 import type { NextPage } from 'next';
+import Head from 'next/head';
 
-import styles from '../styles/home.module.scss';
+import Sidebar from '../components/Sidebar';
 
 const Home: NextPage = () => {
   return (
-    <h1 className={styles.title}>Hello</h1>
+    <>
+      <Head>
+          <title>Lista de Tarefas</title>
+      </Head>
+
+      <Sidebar />      
+    </>
   );
 };
 
