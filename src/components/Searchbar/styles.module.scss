@@ -1,0 +1,22 @@
+.conteiner { 
+    position: relative;
+}
+
+.search {
+    width: 583px;
+    height: 52px;
+    margin: 0;
+    padding-left: 30px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    float: left;
+    position: absolute;
+    border-width: 0px;
+
+}
+
+.img {
+    left: 4px !important;
+    bottom: 48px !important;
+    position: absolute !important;
+}

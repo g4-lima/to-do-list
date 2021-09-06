@@ -20,7 +20,7 @@ const Sidebar: NextPage = () => {
                         <Image src="/list.svg" alt="lista de tarefas" width={24} height={24} />
                         <h3>Tarefas</h3>
                     </a>
-                    <a>
+                    <a href="/about">
                         <Image src="/info.svg" alt="informações" width={24} height={24} />
                         <h3>Sobre</h3>
                     </a>
