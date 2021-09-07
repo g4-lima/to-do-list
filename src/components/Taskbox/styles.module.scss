@@ -1,0 +1,33 @@
+.container {
+    width: 583px;
+    height: 146px;
+
+    background: #0047FF;
+    border-radius: 10px;
+    margin-top: 27px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.content {
+    margin-top: 18px;
+    margin-left: 24px;
+    margin-bottom: 24px;
+
+    h3 {
+        font-weight: bold;
+        font-size: 18px;
+        color: #FFFFFF;
+        margin-bottom: 4px;
+    }
+
+    p {
+        font-weight: normal;
+        font-size: 18px;
+        color: #FFFFFF;
+        line-height: 21px;
+    }
+
+    button {
+        bottom: 100%;
+    }
+}

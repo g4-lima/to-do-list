@@ -10,7 +10,7 @@ const Searchbar: NextPage = () => {
         <>
         <div className="container">
             <input className={styles.search} placeholder={"Procurar tarefas"} type="text" />
-            <Image className={styles.img} src="/search.svg" alt="Prucurar" width={21} height={100} />
+            <Image className={styles.img} src="/search.svg" alt="Prucurar" width={21} height={40} />
         </div>
         </>
     );

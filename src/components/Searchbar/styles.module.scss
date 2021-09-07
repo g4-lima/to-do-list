@@ -12,11 +12,19 @@
     float: left;
     position: absolute;
     border-width: 0px;
+    outline: none;
+    transition: border 200ms;
 
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+
+    &:hover {
+        border: 1px solid blue;
+    }
 }
 
 .img {
     left: 4px !important;
-    bottom: 48px !important;
+    top: 14px !important;
     position: absolute !important;
 }
