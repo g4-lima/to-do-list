@@ -4,7 +4,7 @@
 
     background: #0047FF;
     border-radius: 10px;
-    margin-top: 27px;
+    margin-top: 21px;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
@@ -27,7 +27,28 @@
         line-height: 21px;
     }
 
-    button {
-        bottom: 100%;
+    .statusButton {
+        position: absolute;
+        bottom: 24px;
+        width: 104px;
+        height: 32px;
+        background: #ffffff;
+        border-radius: 5px;
+        border: 0px;
+        transition: background 200ms;
+
+        &:hover {
+            background: #ffffffc9;
+        }
+    }
+}
+
+.optionsButton {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+
+    &:hover {
+        color: #ffffffc9;
     }
 }

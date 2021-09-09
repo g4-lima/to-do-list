@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import Image from 'next/image';
 import Searchbar from '../components/Searchbar';
 import Taskbox from '../components/Taskbox';
 
@@ -15,6 +16,12 @@ const Home: NextPage = () => {
         <Searchbar/>
         <h1>Tarefas</h1>
         <Taskbox />
+        <Taskbox />
+        <Taskbox />
+        <button className={styles.addButton}>
+          <Image src="/plus.svg" alt="adicionar" width={24} height={24} />
+          <p>Nova Tarefa</p>
+        </button>
       </div>
     </>
   );
