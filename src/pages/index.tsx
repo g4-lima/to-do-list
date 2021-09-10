@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
+import CreateTaskMenu from '../components/CreateTaskMenu';
 import Searchbar from '../components/Searchbar';
 import Taskbox from '../components/Taskbox';
 
@@ -23,6 +24,7 @@ const Home: NextPage = () => {
           <p>Nova Tarefa</p>
         </button>
       </div>
+      <CreateTaskMenu />
     </>
   );
 };
