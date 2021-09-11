@@ -3,15 +3,15 @@ import Image from 'next/image';
 import OptionsOverlay from '../OptionsOverlay';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { useDispatch } from 'react-redux';
-import { toggleComplete } from '../../redux/todoSlice';
+import { toggleCompleteAsync } from '../../redux/todoSlice';
 
 import styles from './styles.module.scss';
 
 interface iTodo {
-    id: number;
+    guid: string;
     title: string;
     description: string;
-    completed: boolean;
+    situation: "completed" | "uncompleted";
 }
 
 const Taskbox = (props: iTodo) => {
@@ -20,22 +20,22 @@ const Taskbox = (props: iTodo) => {
     const dispatch = useDispatch();
 
     const handleCompleteClick = () => {
-        dispatch(toggleComplete({
-            id: props.id,
-            completed: !props.completed
+        dispatch(toggleCompleteAsync({
+            guid: (props.guid),
+            situation: (props.situation === "uncompleted") ? "completed" : "uncompleted"
         }))
     }
 
     return (
             <div className={styles.container}>
-                    <div className={styles.content} key={props.id}>
+                    <div className={styles.content} key={props.guid}>
                         <h3>{props.title}</h3>
                         <p>{props.description}</p>
                         <button 
                             className={styles.statusButton}
                             onClick={handleCompleteClick}
                         >
-                            {props.completed ? 
+                            {(props.situation === "completed") ?
                                 <a>
                                     <Image src="/check.svg" alt="completa" width={24} height={24} />
                                     <p>Concluído</p>
@@ -53,7 +53,7 @@ const Taskbox = (props: iTodo) => {
                 <OutsideClickHandler
                 onOutsideClick={() => (setOpenOptions(false))}
                 >
-                    {openOptions && <OptionsOverlay id={props.id}/>}
+                    {openOptions && <OptionsOverlay guid={props.guid}/>}
                 </OutsideClickHandler>            
             </div>
     );

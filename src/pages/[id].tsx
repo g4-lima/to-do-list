@@ -1,11 +1,10 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
-import { toggleComplete } from '../redux/todoSlice';
-import { updateTodo } from '../redux/todoSlice';
+import { toggleCompleteAsync, getTodoAsync, updateTodoAsync } from '../redux/todoSlice';
 
 import styles from '../styles/editTask.module.scss';
 
@@ -14,20 +13,29 @@ interface iState {
   }
 
 interface iTodo {
-    id: number | string;
+    guid: string;
     title: string;
     description: string;
-    completed: boolean;
+    situation: "completed" | "uncompleted";
   } 
 
 const EditTask = () => {
+    const dispatched = useDispatch();
+
     const router = useRouter();
     const { id } = router.query;
 
-    const todo = useSelector((state: iState) => state.todos.filter((todo: iTodo) => todo.id == id));
+    const todo = useSelector((state: iState) => state.todos.filter((todo: iTodo) => todo.guid == id));
+
+    // console.log(id);
+
+    useEffect(() => {
+        dispatched(getTodoAsync());
+      }, [dispatched]);
 
     const title = todo.map((task: iTodo) => task.title).shift();
     const description = todo.map((task: iTodo) => task.description).shift();
+    const situation = todo.map((task: iTodo) => task.situation).shift();
 
     const [taskName, setTaskName] = useState(title);
     const [taskDescription, setTaskDescription] = useState(description);
@@ -35,9 +43,10 @@ const EditTask = () => {
     const dispatch = useDispatch();
 
     const handleCompleteClick = () => {
-        dispatch(toggleComplete({
-            id: todo.map(((task: iTodo) => task.id)).shift(),
-            completed: !todo.map(((task: iTodo) => task.completed)).shift()
+        dispatch(toggleCompleteAsync({
+            guid: id,
+            situation: (situation === "completed") ? "completed" : "uncomplited" || 
+            (situation === "uncompleted") ? "uncompleted" : "complited"
         }));
     };
 
@@ -45,8 +54,8 @@ const EditTask = () => {
         event.preventDefault();
 
         dispatch(
-            updateTodo ({
-                id: todo.map(((task: iTodo) => task.id)).shift(),
+            updateTodoAsync ({
+                guid: id,
                 title: taskName,
                 description: taskDescription,
             })
@@ -62,7 +71,7 @@ const EditTask = () => {
                     <h2>Editar tarefa</h2>
                     
                         {todo.map((task: iTodo) => (
-                            <form key={task.id} onSubmit={onSubmit}>
+                            <form key={task.guid} onSubmit={onSubmit}>
                             <label className={styles.label}>
                                 Nome da tarefa
                                 <input 
@@ -85,14 +94,14 @@ const EditTask = () => {
                             <div className={styles.concludedButtons}>
                                 <button
                                     type="button" 
-                                    className={!task.completed ? styles.selectedButton : styles.unselectedButton}
+                                    className={(task.situation === "uncompleted") ? styles.selectedButton : styles.unselectedButton}
                                     onClick={handleCompleteClick}
                                 >
                                     Em progresso
                                 </button>
                                 <button
                                     type="button" 
-                                    className={task.completed ? styles.selectedButton : styles.unselectedButton}
+                                    className={(task.situation === "completed") ? styles.selectedButton : styles.unselectedButton}
                                     onClick={handleCompleteClick}
                                 >
                                     Concluído

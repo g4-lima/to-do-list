@@ -10,7 +10,7 @@ const CreateTaskMenu = (props: ICreateTaskMenu) => {
     const [visible, setVisible] = useState(props.visibility);
     
     return (
-       <div className={visible ? styles.background : styles.backgroundHidden} >
+       <div className={visible? styles.background : styles.backgroundHidden} >
             <div className={styles.container}>
                 <div className={styles.content}>
                     <h2>Criar tarefa</h2>

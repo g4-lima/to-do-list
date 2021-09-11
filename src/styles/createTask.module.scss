@@ -100,7 +100,13 @@
 
             color: #0047FF;
             border: 0;
-            background: none;            
+            background: none;
+
+            transition: color 200ms;
+            
+            &:hover {
+                color: blue;
+            }
         }
     }
 }

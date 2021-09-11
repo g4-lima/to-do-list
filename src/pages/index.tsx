@@ -1,10 +1,13 @@
 import type { NextPage } from 'next';
+import { useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import Searchbar from '../components/Searchbar';
+import { useSelector, useDispatch } from 'react-redux';
+
 import Taskbox from '../components/Taskbox';
-import { useSelector } from 'react-redux';
+import Searchbar from '../components/Searchbar';
+import { getTodoAsync } from '../redux/todoSlice';
 
 import styles from '../styles/home.module.scss';
 
@@ -13,14 +16,20 @@ interface iState {
 }
 
 interface iTodo {
-  id: number;
+  guid: string;
   title: string;
   description: string;
-  completed: boolean;
+  situation: "completed" | "uncompleted";
 }
 
 const Home: NextPage = () => {
+  const dispatch = useDispatch();
+
   const todos = useSelector((state: iState) => state.todos);
+
+  useEffect(() => {
+    dispatch(getTodoAsync());
+  }, [dispatch]);
 
   return (
     <>
@@ -32,11 +41,11 @@ const Home: NextPage = () => {
         <h1>Tarefas</h1>
         {todos.map((todo: iTodo) => (
           <Taskbox 
-            key={todo.id} 
-            id={todo.id} 
+            key={todo.guid} 
+            guid={todo.guid} 
             title={todo.title} 
             description={todo.description} 
-            completed={todo.completed} 
+            situation={todo.situation} 
           />
         ))}
         <Link href="/createTask">

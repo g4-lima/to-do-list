@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { addTodo } from '../redux/todoSlice';
+import { addTodoAsync } from '../redux/todoSlice';
 
 import styles from '../styles/createTask.module.scss';
 
@@ -18,7 +18,7 @@ const CreateTask = () => {
     const onSubmit = (event: { preventDefault: () => void; }) => {
         event.preventDefault();
         dispatch(
-            addTodo({
+            addTodoAsync({
                 title: taskName,
                 description: taskDescription,
             })
