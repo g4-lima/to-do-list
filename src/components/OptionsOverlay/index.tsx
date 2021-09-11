@@ -1,9 +1,22 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useDispatch } from 'react-redux';
+import { deleteTodo } from '../../redux/todoSlice';
 
 import styles from './styles.module.scss';
 
-const OptionsOverlay = () => {
+interface iOptionsOverlay {
+    id: number;
+}
+
+const OptionsOverlay = (props: iOptionsOverlay) => {
+    const dispatch = useDispatch();
+
+    const handleDeleteClick = () => {
+        dispatch(deleteTodo({
+            id: props.id
+        }))
+    }
 
     return (
         <>
@@ -16,10 +29,10 @@ const OptionsOverlay = () => {
                         </a>                        
                     </Link>
                     <Link href="/" passHref={true} >
-                        <a>
+                        <button type="button" onClick={handleDeleteClick}>
                             <Image className={styles.icon} src="/trash.svg" alt="remover" width={12} height={11} />
                             Remover tarefa
-                        </a>                        
+                        </button>                        
                     </Link>
                 </div>
             </div>

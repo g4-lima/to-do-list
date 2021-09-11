@@ -31,7 +31,30 @@
         transition: color 200ms;
 
         .icon {
-            margin-top: 16px;
+            margin-right: 4px;
+        }
+
+        &:hover {
+            color: rgba(0, 0, 0, 0.747);
+        }
+    }
+
+    button {
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 13.1753px;
+        line-height: 16px;
+        align-items: center;
+        justify-content: space-between;
+        border: 0;
+
+        color: rgba(0, 0, 0, 0.4);
+        margin-bottom: 12px;
+        transition: color 200ms;
+
+        .icon {
+            margin-right: 4px;
         }
 
         &:hover {
