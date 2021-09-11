@@ -22,7 +22,7 @@ const OptionsOverlay = (props: iOptionsOverlay) => {
         <>
             <div className={styles.container}>
                 <div className={styles.buttons}>
-                    <Link href="/editTask" passHref={true} >
+                    <Link href={`${props.id}`} passHref={true} >
                         <a>
                             <Image className={styles.icon} src="/pencil.svg" alt="editar" width={12} height={12} />
                             Atualizar tarefa

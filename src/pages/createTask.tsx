@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+
 import { addTodo } from '../redux/todoSlice';
 
 import styles from '../styles/createTask.module.scss';
@@ -35,7 +36,8 @@ const CreateTask = () => {
                             Nome da tarefa
                             <input 
                                 className={styles.nameInput} 
-                                type="text" value={taskName} 
+                                type="text" 
+                                value={taskName} 
                                 onChange={(event) => setTaskName(event.target.value)} 
                             />
                         </label>
@@ -44,6 +46,7 @@ const CreateTask = () => {
                             Descrição da tarefa
                             <textarea 
                                 className={styles.descriptionInput}
+                                value={taskDescription}
                                 onChange={(event) => setTaskDescription(event.target.value)} 
                             />
                         </label>
