@@ -23,9 +23,7 @@ const Taskbox: NextPage = () => {
               onOutsideClick={() => (setOpenOptions(false))}
             >
                 {openOptions && <OptionsOverlay />}
-            </OutsideClickHandler>
-
-            
+            </OutsideClickHandler>            
         </div>
     );
 };

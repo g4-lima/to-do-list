@@ -1,16 +1,10 @@
-import { useState } from 'react';
+import Link from 'next/link';
 
-import styles from './styles.module.scss';
+import styles from '../styles/createTask.module.scss';
 
-interface ICreateTaskMenu {
-    visibility: boolean;
-}
-
-const CreateTaskMenu = (props: ICreateTaskMenu) => {
-    const [visible, setVisible] = useState(props.visibility);
-    
+const CreateTask = () => {    
     return (
-       <div className={visible ? styles.background : styles.backgroundHidden} >
+       <div className={styles.background} >
             <div className={styles.container}>
                 <div className={styles.content}>
                     <h2>Criar tarefa</h2>
@@ -26,13 +20,15 @@ const CreateTaskMenu = (props: ICreateTaskMenu) => {
                         </label>  
                     </form>
                     <div className={styles.buttons}>
-                        <button onClick={() => setVisible(false)}>CANCELAR</button>
-                        <button type="submit">SALVAR</button>
-                    </div>   
+                        <Link href="/">
+                            <a className={styles.actionButton}>CANCELAR</a>
+                        </Link>
+                        <button className={styles.actionButton} type="submit">SALVAR</button>
+                    </div>  
                 </div>                     
             </div>
         </div>
     );
 };
 
-export default CreateTaskMenu;
+export default CreateTask;

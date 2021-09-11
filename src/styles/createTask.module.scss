@@ -92,16 +92,15 @@
         align-items: center;
         margin-top: 16px;
 
-        button {
+        .actionButton {
             font-family: Montserrat;
-            font-style: normal;
             font-weight: 600;
             font-size: 14px;
             margin-left: 14px;
 
             color: #0047FF;
             border: 0;
+            background: none;            
         }
-
     }
 }

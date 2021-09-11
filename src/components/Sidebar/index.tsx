@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import styles from './styles.module.scss';
 
@@ -16,14 +17,18 @@ const Sidebar: NextPage = () => {
                 </div>
                 <div className={styles.divisor} />
                 <nav>
-                    <a>
-                        <Image src="/list.svg" alt="lista de tarefas" width={24} height={24} />
-                        <h3>Tarefas</h3>
-                    </a>
-                    <a href="/about">
-                        <Image src="/info.svg" alt="informações" width={24} height={24} />
-                        <h3>Sobre</h3>
-                    </a>
+                    <Link href="/">
+                        <a>
+                            <Image src="/list.svg" alt="lista de tarefas" width={24} height={24} />
+                            <h3>Tarefas</h3>
+                        </a>
+                    </Link>
+                    <Link href="/about">
+                        <a>
+                            <Image src="/info.svg" alt="informações" width={24} height={24} />
+                            <h3>Sobre</h3>
+                        </a>
+                    </Link>
                 </nav>
             </div>
         </div>
