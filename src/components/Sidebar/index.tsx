@@ -1,10 +1,9 @@
-import type { NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
 import styles from './styles.module.scss';
 
-const Sidebar: NextPage = () => {
+const Sidebar = () => {
     return (
         <div className={styles.container}>
             <div className={styles.content}>

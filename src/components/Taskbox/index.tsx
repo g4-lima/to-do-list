@@ -38,7 +38,7 @@ const Taskbox = (props: iTodo) => {
                             onClick={handleCompleteClick}
                         >
                             {(props.situation === "completed") ?
-                                <a>
+                                <a className={styles.concludedButton}>
                                     <Image src="/check.svg" alt="completa" width={24} height={24} />
                                     <p>Concluído</p>
                                 </a>

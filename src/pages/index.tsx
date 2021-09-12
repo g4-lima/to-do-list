@@ -85,7 +85,7 @@ const Home: NextPage = () => {
         )}
         <Link href="/createTask">
           <a className={styles.addButton} >
-            <Image src="/plus.svg" alt="adicionar" width={24} height={24} />
+            <Image className={styles.icon} src="/plus.svg" alt="adicionar" width={24} height={24} />
             <p>Nova Tarefa</p>
           </a>
         </Link>
