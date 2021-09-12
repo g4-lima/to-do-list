@@ -1,5 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
+interface iPayload {
+    guid: string;
+    title: string;
+    description: string;
+    situation: "completed" | "uncompleted";
+}
+
 export const getTodoAsync: any = createAsyncThunk(
     'todos/getTodoAsync',
     async () => {
@@ -13,7 +20,7 @@ export const getTodoAsync: any = createAsyncThunk(
 
 export const addTodoAsync: any = createAsyncThunk(
     'todos/addTodoAsync',
-    async (payload) => {
+    async (payload: iPayload) => {
         const response = await fetch('https://chronos.compraqui.app/api/tasks', {
             method: 'POST',
             headers: {
@@ -31,21 +38,22 @@ export const addTodoAsync: any = createAsyncThunk(
 
 export const toggleCompleteAsync: any = createAsyncThunk(
     'todos/completeTodoAsync',
-    async (payload) => {
+    async (payload: iPayload) => {
+        console.log(payload)
         const response = await fetch(
-            `https://chronos.compraqui.app/api/tasks/${payload.guid}`,
+            'https://chronos.compraqui.app/api/tasks',
             {
-                method: 'PATCH',
+                method: 'PUT',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
                 },
+                body: JSON.stringify({ guid: payload.guid, title: payload.title, description: payload.description, situation: "completed" }),
             }
         );
 
         if (response.ok) {
             const todo = await response.json();
-            console.log(todo)
             return { todo };
         }
     }
@@ -53,8 +61,7 @@ export const toggleCompleteAsync: any = createAsyncThunk(
 
 export const updateTodoAsync: any = createAsyncThunk(
     'todos/updateTodoAsync',
-    async (payload) => {
-        console.log(JSON.stringify(payload))
+    async (payload: iPayload) => {
         const response = await fetch(
             'https://chronos.compraqui.app/api/tasks', {
                 method: 'PUT',  
@@ -77,7 +84,7 @@ export const updateTodoAsync: any = createAsyncThunk(
 
 export const deleteTodoAsync: any = createAsyncThunk(
     'todos/deleteTodoAsync',
-    async (payload) => {
+    async (payload: iPayload) => {
         const response = await fetch(`https://chronos.compraqui.app/api/tasks/${payload.guid}`, {
             method: 'DELETE',
         });
@@ -124,12 +131,18 @@ const todoSlice = createSlice({
             state.push(action.payload.todo);
         },
         [toggleCompleteAsync.fulfilled]: (state, action) => {
+            // const index = state.findIndex((todo) => todo.guid === action.payload.todo.guid);
+            // state[index].situation = action.payload.todo.situation;
+
+            console.log(action.payload)
             const index = state.findIndex((todo) => todo.guid === action.payload.todo.guid);
+            state[index].title = action.payload.todo.title;
+            state[index].description = action.payload.todo.description;
             state[index].situation = action.payload.todo.situation;
         },
         [updateTodoAsync.fulfilled]: (state,action) => {
             const index = state.findIndex((todo) => todo.guid === action.payload.todo.guid);
-            state[index].title = action.payload.title;
+            state[index].title = action.payload.todo.title;
             state[index].description = action.payload.todo.description;
             state[index].situation = action.payload.todo.situation;
         },

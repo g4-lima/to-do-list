@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import OptionsOverlay from '../OptionsOverlay';
 import OutsideClickHandler from 'react-outside-click-handler';
@@ -21,8 +21,10 @@ const Taskbox = (props: iTodo) => {
 
     const handleCompleteClick = () => {
         dispatch(toggleCompleteAsync({
-            guid: (props.guid),
-            situation: (props.situation)
+            guid: props.guid,
+            title: props.title,
+            description: props.description,
+            situation: props.situation,
         }))
     }
 

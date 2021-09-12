@@ -39,6 +39,8 @@ const EditTask = () => {
     const [taskName, setTaskName] = useState(title);
     const [taskDescription, setTaskDescription] = useState(description);
     const [taskCompleted, setTaskCompleted] = useState(situation);
+    const [errorPath, setErrorPath] = useState('');
+    const [errorMessager, setErrorMessager] = useState('');
 
     const dispatch = useDispatch();
 
@@ -50,8 +52,32 @@ const EditTask = () => {
        setTaskCompleted("completed")
     };
 
-    const onSubmit = (event: { preventDefault: () => void; }) => {
+    const onSubmit = async (event: { preventDefault: () => void; }) => {
         event.preventDefault();
+
+        try {
+            let schema = yup.object().shape({
+                title: yup.string()
+                    .required('Título obrigatório')
+                    .min(1)
+                    .max(100, 'Máximo 100 caracteres'),
+                description: yup.string()
+                    .nullable()
+                    .max(1024, 'Máximo 1024 caracteres'),
+            });
+        
+            await schema.validate({
+                title: taskName,
+                description: taskDescription,
+                abortEarly: false,
+            })
+        }
+
+        catch(err: any) {
+            setErrorPath(err.path);
+            setErrorMessager(err.message)
+            return;
+        };
 
         dispatch(
             updateTodoAsync ({
@@ -74,20 +100,26 @@ const EditTask = () => {
                         {todo.map((task: iTodo) => (
                             <form key={task.guid} onSubmit={onSubmit}>
                             <label className={styles.label}>
-                                Nome da tarefa
+                                <div className={styles.titles}>
+                                    Nome da tarefa
+                                    {(errorPath == 'title') && <p className={styles.errorMessage} >{errorMessager}</p>}
+                                </div>
                                 <input 
-                                    className={styles.nameInput} 
+                                    className={(errorPath == 'title') ? styles.nameInputError : styles.nameInput} 
                                     type="text" 
-                                    value={taskName}
-                                    onChange={(event) => setTaskName(event.target.value)}    
-                                />                                    
+                                    value={taskName} 
+                                    onChange={(event) => setTaskName(event.target.value)} 
+                                />                                  
                             </label>
 
                             <label className={styles.label}>
-                                Descrição da tarefa
+                                <div className={styles.titles}>
+                                    Descrição da tarefa
+                                    {(errorPath === 'description') && <p className={styles.errorMessage} >{errorMessager}</p>}
+                                </div>
                                 <textarea 
-                                    className={styles.descriptionInput} 
-                                    value={taskDescription} 
+                                    className={(errorPath === 'description') ? styles.descriptionInputError : styles.descriptionInput}
+                                    value={taskDescription}
                                     onChange={(event) => setTaskDescription(event.target.value)} 
                                 />
                             </label>

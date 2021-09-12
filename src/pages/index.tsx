@@ -46,17 +46,19 @@ const Home: NextPage = () => {
 
   const onSearch = (taskName: string | null) => {
     if (!taskName) {
-      return setSearchTasks(todos);
+      setSearchTasks(todos);
     }
     setNotFound(false);
 
-    const result: iTodo[] = searchTask(taskName);
+    if (taskName) {
+      const result: iTodo[] = searchTask(taskName);
 
-    if (result.length === 0) {
-      setNotFound(true);
-    } else {
-      setSearchTasks(result);
-    }
+      if (result.length === 0) {
+        setNotFound(true);
+      } else {
+        setSearchTasks(result);
+      }
+    }    
   }
 
   return (
