@@ -34,10 +34,14 @@ const Home: NextPage = () => {
   const [notFound, setNotFound] = useState(false);
   const [searchTasks, setSearchTasks] = useState<iTodo[]>(todos);
 
+  useEffect(() => {
+    setSearchTasks(todos)
+  }, [todos]);
+
   const searchTask = (taskName: string) => {
-    let todosFilter = searchTasks;
-    return todosFilter.filter((todo: iTodo) => 
+    let todosFilter = searchTasks.filter((todo: iTodo) => 
       todo.title.toLowerCase().includes(taskName.toLowerCase()));
+    return todosFilter;
   }
 
   const onSearch = (taskName: string | null) => {
@@ -50,7 +54,6 @@ const Home: NextPage = () => {
 
     if (result.length === 0) {
       setNotFound(true);
-      return;
     } else {
       setSearchTasks(result);
     }
@@ -78,17 +81,6 @@ const Home: NextPage = () => {
             />
           ))
         )}
-
-
-        {/* {todos.map((todo: iTodo) => (
-          <Taskbox 
-            key={todo.guid} 
-            guid={todo.guid} 
-            title={todo.title} 
-            description={todo.description} 
-            situation={todo.situation} 
-          />
-        ))} */}
         <Link href="/createTask">
           <a className={styles.addButton} >
             <Image src="/plus.svg" alt="adicionar" width={24} height={24} />

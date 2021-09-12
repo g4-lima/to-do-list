@@ -40,12 +40,12 @@ export const toggleCompleteAsync: any = createAsyncThunk(
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ situation: payload.situation })
             }
         );
 
         if (response.ok) {
             const todo = await response.json();
+            console.log(todo)
             return { todo };
         }
     }

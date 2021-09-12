@@ -3,8 +3,9 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
+import * as yup from 'yup';
 
-import { toggleCompleteAsync, getTodoAsync, updateTodoAsync } from '../redux/todoSlice';
+import { getTodoAsync, updateTodoAsync } from '../redux/todoSlice';
 
 import styles from '../styles/editTask.module.scss';
 
@@ -27,8 +28,6 @@ const EditTask = () => {
 
     const todo = useSelector((state: iState) => state.todos.filter((todo: iTodo) => todo.guid == id));
 
-    // console.log(id);
-
     useEffect(() => {
         dispatched(getTodoAsync());
       }, [dispatched]);
@@ -39,15 +38,16 @@ const EditTask = () => {
 
     const [taskName, setTaskName] = useState(title);
     const [taskDescription, setTaskDescription] = useState(description);
+    const [taskCompleted, setTaskCompleted] = useState(situation);
 
     const dispatch = useDispatch();
 
+    const handleUncompleteClick = () => {
+        setTaskCompleted("uncompleted")
+    };
+
     const handleCompleteClick = () => {
-        dispatch(toggleCompleteAsync({
-            guid: id,
-            situation: (situation === "completed") ? "completed" : "uncomplited" || 
-            (situation === "uncompleted") ? "uncompleted" : "complited"
-        }));
+       setTaskCompleted("completed")
     };
 
     const onSubmit = (event: { preventDefault: () => void; }) => {
@@ -58,7 +58,7 @@ const EditTask = () => {
                 guid: id,
                 title: taskName,
                 description: taskDescription,
-                situation: situation,
+                situation: taskCompleted,
             })
         );
         router.push('/');
@@ -95,14 +95,14 @@ const EditTask = () => {
                             <div className={styles.concludedButtons}>
                                 <button
                                     type="button" 
-                                    className={(task.situation === "uncompleted") ? styles.selectedButton : styles.unselectedButton}
-                                    onClick={handleCompleteClick}
+                                    className={(taskCompleted === "uncompleted") ? styles.selectedButton : styles.unselectedButton}
+                                    onClick={handleUncompleteClick}
                                 >
                                     Em progresso
                                 </button>
                                 <button
                                     type="button" 
-                                    className={(task.situation === "completed") ? styles.selectedButton : styles.unselectedButton}
+                                    className={(taskCompleted === "completed") ? styles.selectedButton : styles.unselectedButton}
                                     onClick={handleCompleteClick}
                                 >
                                     Concluído

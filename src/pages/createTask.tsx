@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import * as yup from 'yup';
 
 import { addTodoAsync } from '../redux/todoSlice';
 
@@ -10,13 +11,40 @@ import styles from '../styles/createTask.module.scss';
 const CreateTask = () => {
     const [taskName, setTaskName] = useState('');
     const [taskDescription, setTaskDescription] = useState('');
+    const [errorPath, setErrorPath] = useState('');
+    const [errorMessager, setErrorMessager] = useState('');
 
     const dispatch = useDispatch();
 
     const router = useRouter();
 
-    const onSubmit = (event: { preventDefault: () => void; }) => {
+    const onSubmit = async (event: { preventDefault: () => void; }) => {
         event.preventDefault();
+
+        try {
+            let schema = yup.object().shape({
+                title: yup.string()
+                    .required('Título obrigatório')
+                    .min(1)
+                    .max(100, 'Máximo 100 caracteres'),
+                description: yup.string()
+                    .nullable()
+                    .max(1024, 'Máximo 1024 caracteres'),
+            });
+        
+            await schema.validate({
+                title: taskName,
+                description: taskDescription,
+                abortEarly: false,
+            })
+        }
+
+        catch(err: any) {
+            setErrorPath(err.path);
+            setErrorMessager(err.message)
+            return;
+        };
+
         dispatch(
             addTodoAsync({
                 title: taskName,
@@ -25,7 +53,7 @@ const CreateTask = () => {
         );
         router.push('/');
     };
-    
+
     return (
        <div className={styles.background} >
             <div className={styles.container}>
@@ -33,9 +61,12 @@ const CreateTask = () => {
                     <h2>Criar tarefa</h2>
                     <form onSubmit={onSubmit}>
                         <label className={styles.label}>
-                            Nome da tarefa
+                            <div className={styles.titles}>
+                                Nome da tarefa
+                                {(errorPath == 'title') && <p className={styles.errorMessage} >{errorMessager}</p>}
+                            </div>
                             <input 
-                                className={styles.nameInput} 
+                                className={(errorPath == 'title') ? styles.nameInputError : styles.nameInput} 
                                 type="text" 
                                 value={taskName} 
                                 onChange={(event) => setTaskName(event.target.value)} 
@@ -43,9 +74,12 @@ const CreateTask = () => {
                         </label>
 
                         <label className={styles.label}>
-                            Descrição da tarefa
+                            <div className={styles.titles}>
+                                Descrição da tarefa
+                                {(errorPath === 'description') && <p className={styles.errorMessage} >{errorMessager}</p>}
+                            </div>
                             <textarea 
-                                className={styles.descriptionInput}
+                                className={(errorPath === 'description') ? styles.descriptionInputError : styles.descriptionInput}
                                 value={taskDescription}
                                 onChange={(event) => setTaskDescription(event.target.value)} 
                             />

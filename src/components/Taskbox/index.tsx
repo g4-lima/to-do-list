@@ -22,7 +22,7 @@ const Taskbox = (props: iTodo) => {
     const handleCompleteClick = () => {
         dispatch(toggleCompleteAsync({
             guid: (props.guid),
-            situation: (props.situation === "uncompleted") ? "completed" : "uncompleted"
+            situation: (props.situation)
         }))
     }
 
