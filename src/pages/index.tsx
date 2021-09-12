@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -31,15 +31,56 @@ const Home: NextPage = () => {
     dispatch(getTodoAsync());
   }, [dispatch]);
 
+  const [notFound, setNotFound] = useState(false);
+  const [searchTasks, setSearchTasks] = useState<iTodo[]>(todos);
+
+  const searchTask = (taskName: string) => {
+    let todosFilter = searchTasks;
+    return todosFilter.filter((todo: iTodo) => 
+      todo.title.toLowerCase().includes(taskName.toLowerCase()));
+  }
+
+  const onSearch = (taskName: string | null) => {
+    if (!taskName) {
+      return setSearchTasks(todos);
+    }
+    setNotFound(false);
+
+    const result: iTodo[] = searchTask(taskName);
+
+    if (result.length === 0) {
+      setNotFound(true);
+      return;
+    } else {
+      setSearchTasks(result);
+    }
+  }
+
   return (
     <>
       <Head>
           <title>Lista de Tarefas</title>
       </Head>
       <div className={styles.container}>
-        <Searchbar/>
+        <Searchbar onSearch={onSearch} />
         <h1>Tarefas</h1>
-        {todos.map((todo: iTodo) => (
+
+        {notFound ? 
+          <strong>Tarefa não encontrada!</strong>
+        : (
+          searchTasks.map((todo: iTodo) => (
+            <Taskbox 
+              key={todo.guid} 
+              guid={todo.guid} 
+              title={todo.title} 
+              description={todo.description} 
+              situation={todo.situation} 
+            />
+          ))
+        )}
+
+
+        {/* {todos.map((todo: iTodo) => (
           <Taskbox 
             key={todo.guid} 
             guid={todo.guid} 
@@ -47,7 +88,7 @@ const Home: NextPage = () => {
             description={todo.description} 
             situation={todo.situation} 
           />
-        ))}
+        ))} */}
         <Link href="/createTask">
           <a className={styles.addButton} >
             <Image src="/plus.svg" alt="adicionar" width={24} height={24} />

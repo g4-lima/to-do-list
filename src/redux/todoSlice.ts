@@ -1,24 +1,14 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
-
-
-// export const getTodoAsync: any = createAsyncThunk(
-//     'todos/getTodoAsync',
-//     async () => {
-//         const response = await fetch('https://chronos.compraqui.app/api/tasks');
-//         if(response.ok) {
-//             const todos = await response.json();
-//             return { todos }
-//         }
-//     }
-// );
 
 export const getTodoAsync: any = createAsyncThunk(
-        'todos/getTodoAsync',
-        () => axios
-            .get('https://chronos.compraqui.app/api/tasks')
-            .then(response => response.data)
-            .catch(error => error)
+    'todos/getTodoAsync',
+    async () => {
+        const response = await fetch('https://chronos.compraqui.app/api/tasks');
+        if(response.ok) {
+            const todos = await response.json();
+            return { todos }
+        }
+    }
 );
 
 export const addTodoAsync: any = createAsyncThunk(
@@ -47,12 +37,12 @@ export const toggleCompleteAsync: any = createAsyncThunk(
             {
                 method: 'PATCH',
                 headers: {
-                    'Content-Type': 'applications.json',
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ situation: payload.situation })
             }
         );
-
 
         if (response.ok) {
             const todo = await response.json();
@@ -64,18 +54,17 @@ export const toggleCompleteAsync: any = createAsyncThunk(
 export const updateTodoAsync: any = createAsyncThunk(
     'todos/updateTodoAsync',
     async (payload) => {
+        console.log(JSON.stringify(payload))
         const response = await fetch(
-            `https://chronos.compraqui.app/api/tasks/${payload.guid}`, {
-                method: 'PUT',
+            'https://chronos.compraqui.app/api/tasks', {
+                method: 'PUT',  
                 headers: {
-                    'Content-Type': 'applications.json',
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ guid: payload.guid, title: payload.title, description: payload.description, situation: payload.situation })
-            }
-            
-        );
-        console.log(payload);
-
+                body: JSON.stringify(payload),
+            }            
+        )
 
         if (response.ok) {
             const todo = await response.json();
@@ -86,17 +75,10 @@ export const updateTodoAsync: any = createAsyncThunk(
     }
 );
 
-// export const updateTodoAsync: any = createAsyncThunk(
-//     'todos/updateTodoAsync',
-//     (payload) => axios
-//         .put(`https://chronos.compraqui.app/api/tasks/${payload.guid}`)
-//         .catch(error => error)
-// );
-
 export const deleteTodoAsync: any = createAsyncThunk(
     'todos/deleteTodoAsync',
     async (payload) => {
-        const response = await  fetch(`https://chronos.compraqui.app/api/tasks/${payload.guid}`, {
+        const response = await fetch(`https://chronos.compraqui.app/api/tasks/${payload.guid}`, {
             method: 'DELETE',
         });
 
@@ -129,18 +111,14 @@ const todoSlice = createSlice({
             return state.filter((todo) => todo.guid !== action.payload.guid);
         },
         updateTodo: (state, action) => {
-            console.log(action.payload)
             const index = state.findIndex((todo) => todo.guid === action.payload.guid);
             state[index].title = action.payload.title;
             state[index].description = action.payload.description;
         }
     },
     extraReducers: {
-        // [getTodoAsync.fulfilled]: (state, action) => {
-        //     return action.payload.todos;
-        // },
         [getTodoAsync.fulfilled]: (state, action) => {
-            return action.payload;
+            return action.payload.todos;
         },
         [addTodoAsync.fulfilled]: (state, action) => {
             state.push(action.payload.todo);
@@ -150,14 +128,12 @@ const todoSlice = createSlice({
             state[index].situation = action.payload.todo.situation;
         },
         [updateTodoAsync.fulfilled]: (state,action) => {
-            const index = state.findIndex((todo) => todo.guid == action.payload.todo.guid);
+            const index = state.findIndex((todo) => todo.guid === action.payload.todo.guid);
             state[index].title = action.payload.title;
             state[index].description = action.payload.todo.description;
             state[index].situation = action.payload.todo.situation;
         },
         [deleteTodoAsync.fulfilled]: (state, action) => {
-            console.log(action.payload.guid)
-            console.log(state.filter((todo) => todo.guid !== action.payload.guid))
             return state.filter((todo) => todo.guid !== action.payload.guid);
         },
     }

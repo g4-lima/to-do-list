@@ -58,6 +58,7 @@ const EditTask = () => {
                 guid: id,
                 title: taskName,
                 description: taskDescription,
+                situation: situation,
             })
         );
         router.push('/');
