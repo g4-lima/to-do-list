@@ -9,28 +9,29 @@ import { getTodoAsync, updateTodoAsync } from '../redux/todoSlice';
 
 import styles from '../styles/editTask.module.scss';
 
-interface iState {
-    todos: [];
-  }
-
 interface iTodo {
     guid: string;
     title: string;
     description: string;
     situation: "completed" | "uncompleted";
-  } 
+  }
+  
+  interface iState {
+    todos: [iTodo];
+  }
 
 const EditTask = () => {
-    const dispatched = useDispatch();
+    // const dispatched = useDispatch();
+    const dispatch = useDispatch();
 
     const router = useRouter();
     const { id } = router.query;
 
-    const todo = useSelector((state: iState) => state.todos.filter((todo: iTodo) => todo.guid == id));
+    const todo = useSelector((state: iState) => state.todos.filter((todo) => todo.guid === id));
 
     useEffect(() => {
-        dispatched(getTodoAsync());
-      }, [dispatched]);
+        dispatch(getTodoAsync());
+      }, [dispatch]);
 
     const title = todo.map((task: iTodo) => task.title).shift();
     const description = todo.map((task: iTodo) => task.description).shift();
@@ -40,9 +41,9 @@ const EditTask = () => {
     const [taskDescription, setTaskDescription] = useState(description);
     const [taskCompleted, setTaskCompleted] = useState(situation);
     const [errorPath, setErrorPath] = useState('');
-    const [errorMessager, setErrorMessager] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     const handleUncompleteClick = () => {
         setTaskCompleted("uncompleted")
@@ -75,7 +76,7 @@ const EditTask = () => {
 
         catch(err: any) {
             setErrorPath(err.path);
-            setErrorMessager(err.message)
+            setErrorMessage(err.message)
             return;
         };
 
@@ -102,7 +103,7 @@ const EditTask = () => {
                             <label className={styles.label}>
                                 <div className={styles.titles}>
                                     Nome da tarefa
-                                    {(errorPath == 'title') && <p className={styles.errorMessage} >{errorMessager}</p>}
+                                    {(errorPath == 'title') && <p className={styles.errorMessage} >{errorMessage}</p>}
                                 </div>
                                 <input 
                                     className={(errorPath == 'title') ? styles.nameInputError : styles.nameInput} 
@@ -115,7 +116,7 @@ const EditTask = () => {
                             <label className={styles.label}>
                                 <div className={styles.titles}>
                                     Descrição da tarefa
-                                    {(errorPath === 'description') && <p className={styles.errorMessage} >{errorMessager}</p>}
+                                    {(errorPath === 'description') && <p className={styles.errorMessage} >{errorMessage}</p>}
                                 </div>
                                 <textarea 
                                     className={(errorPath === 'description') ? styles.descriptionInputError : styles.descriptionInput}

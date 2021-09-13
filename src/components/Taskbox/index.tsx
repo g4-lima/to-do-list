@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import OptionsOverlay from '../OptionsOverlay';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { useDispatch } from 'react-redux';
+
 import { toggleCompleteAsync } from '../../redux/todoSlice';
 
 import styles from './styles.module.scss';

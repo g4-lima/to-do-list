@@ -98,7 +98,7 @@ export const deleteTodoAsync: any = createAsyncThunk(
 const todoSlice = createSlice({
     name: "todos",
     initialState: [
-        { guid: 'string', title: 'string', description: 'string', situation: "uncompleted" }
+        { guid: 'string', title: 'string', description: 'string', situation: 'uncompleted' }
     ],
     reducers: {
         addTodo: (state, action) => {
@@ -106,7 +106,7 @@ const todoSlice = createSlice({
                 guid: 'string',
                 title: action.payload.title,
                 description: action.payload.description,
-                situation: "uncompleted"
+                situation: 'uncompleted'
             };
             state.push(newTodo);
         },
@@ -131,10 +131,6 @@ const todoSlice = createSlice({
             state.push(action.payload.todo);
         },
         [toggleCompleteAsync.fulfilled]: (state, action) => {
-            // const index = state.findIndex((todo) => todo.guid === action.payload.todo.guid);
-            // state[index].situation = action.payload.todo.situation;
-
-            console.log(action.payload)
             const index = state.findIndex((todo) => todo.guid === action.payload.todo.guid);
             state[index].title = action.payload.todo.title;
             state[index].description = action.payload.todo.description;

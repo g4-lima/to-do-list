@@ -11,15 +11,15 @@ import { getTodoAsync } from '../redux/todoSlice';
 
 import styles from '../styles/home.module.scss';
 
-interface iState {
-  todos: [];
-}
-
 interface iTodo {
   guid: string;
   title: string;
   description: string;
   situation: "completed" | "uncompleted";
+}
+
+interface iState {
+  todos: [iTodo];
 }
 
 const Home: NextPage = () => {

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useDispatch } from 'react-redux';
+
 import { deleteTodoAsync } from '../../redux/todoSlice';
 
 import styles from './styles.module.scss';

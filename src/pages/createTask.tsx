@@ -12,7 +12,7 @@ const CreateTask = () => {
     const [taskName, setTaskName] = useState('');
     const [taskDescription, setTaskDescription] = useState('');
     const [errorPath, setErrorPath] = useState('');
-    const [errorMessager, setErrorMessager] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     const dispatch = useDispatch();
 
@@ -41,7 +41,7 @@ const CreateTask = () => {
 
         catch(err: any) {
             setErrorPath(err.path);
-            setErrorMessager(err.message)
+            setErrorMessage(err.message)
             return;
         };
 
@@ -63,7 +63,7 @@ const CreateTask = () => {
                         <label className={styles.label}>
                             <div className={styles.titles}>
                                 Nome da tarefa
-                                {(errorPath == 'title') && <p className={styles.errorMessage} >{errorMessager}</p>}
+                                {(errorPath == 'title') && <p className={styles.errorMessage} >{errorMessage}</p>}
                             </div>
                             <input 
                                 className={(errorPath == 'title') ? styles.nameInputError : styles.nameInput} 
@@ -76,7 +76,7 @@ const CreateTask = () => {
                         <label className={styles.label}>
                             <div className={styles.titles}>
                                 Descrição da tarefa
-                                {(errorPath === 'description') && <p className={styles.errorMessage} >{errorMessager}</p>}
+                                {(errorPath === 'description') && <p className={styles.errorMessage} >{errorMessage}</p>}
                             </div>
                             <textarea 
                                 className={(errorPath === 'description') ? styles.descriptionInputError : styles.descriptionInput}
