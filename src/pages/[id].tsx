@@ -21,7 +21,6 @@ interface iTodo {
   }
 
 const EditTask = () => {
-    // const dispatched = useDispatch();
     const dispatch = useDispatch();
 
     const router = useRouter();
@@ -42,8 +41,6 @@ const EditTask = () => {
     const [taskCompleted, setTaskCompleted] = useState(situation);
     const [errorPath, setErrorPath] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-
-    // const dispatch = useDispatch();
 
     const handleUncompleteClick = () => {
         setTaskCompleted("uncompleted")
