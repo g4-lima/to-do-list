@@ -89,7 +89,7 @@ A aplicação conta com responsividade para dispositivos móveis, conforme demos
 
 - [Yarn](https://classic.yarnpkg.com/)
 
-**Instalção das dependências**
+**Instalação das dependências**
 
 ```sh
 $ yarn
