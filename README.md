@@ -14,21 +14,21 @@
 
 ## Funcionalidades
 
-Projeto com a função de criar uma lista de tarefas.
+Projeto com a função de criar uma lista de tarefas. <br/>
 Para isso, a aplicação é capaz de comunicar-se com a API e realizar as seguintes funcionalidades:
 
-### Listar as tarefas:
+ ### Listar as tarefas:
 A aplicação se conecta a API e através do método GET, consegue listas todas as tarefas.
 
-### Inlcuir uma nova tarefa:
-Através do método POST, uma nova tarefa pode ser criada.
+ ### Inlcuir uma nova tarefa:
+Através do método POST, uma nova tarefa pode ser criada. <br/>
 Contendo um títlo e uma descição opcional.
 
-### Remover uma tarefa:
+ #### Remover uma tarefa:
 Cada tarefa contém um ID de identificação único, através do envio desse parâmetro com o método DELETE, a aplicação pode realizar a remoção de uma tarefa.
 
-### Editar uma tarefa:
-O usuário é capaz de alterar o título, descição ou situação da tarefa (completa ou incompleta).
+ - Editar uma tarefa:
+O usuário é capaz de alterar o título, descição ou situação da tarefa (completa ou incompleta). <br/>
 Para a alteração é necessário enviar o ID de identificação da tarefa, título, descrição e situação, com o método PUT, a aplicação é capaz de reaizar as alterações e renderizar a tarefa atualizada.
 
 ## Tecnologias
