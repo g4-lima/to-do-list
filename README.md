@@ -13,7 +13,9 @@
 
 <br/>
 
+<h1 align="center">
 <img align="center" alt="home" width="640px"  src="https://media.giphy.com/media/RrD8BFCQ1p6PbRzNH5/giphy.gif?cid=790b7611d6ce687bc0fd1739a3bb6d004dde15edd74005b6&rid=giphy.gif&ct=g" />
+</h1>
 
 ---
 <br/>
@@ -67,7 +69,9 @@ Foi utilizado o pré-processador de CSS, o SASS. A implementação facilitou a c
  
  <img align="left" alt="no-name" src="https://media.giphy.com/media/lUTLzHQZZliiYsf1Mk/giphy.gif" />
  <img align="center" alt="title"  src="https://media.giphy.com/media/nSoWhSPXaF5q7kDZI7/giphy.gif" />
+ <h1 align="right">
  <img align="center" alt="description"  src="https://media.giphy.com/media/qsgIatujhzouxG5q0O/giphy.gif" />
+  </h1>
  
 ---
 <br/>
