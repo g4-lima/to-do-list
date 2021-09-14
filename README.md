@@ -13,6 +13,11 @@
 
 <br/>
 
+<img align="center" alt="home" width="640px"  src="https://media.giphy.com/media/RrD8BFCQ1p6PbRzNH5/giphy.gif?cid=790b7611d6ce687bc0fd1739a3bb6d004dde15edd74005b6&rid=giphy.gif&ct=g" />
+
+---
+<br/>
+
 ## Funcionalidades
 
 Projeto com a função de criar uma lista de tarefas. <br/>
@@ -71,7 +76,7 @@ Foi utilizado o pré-processador de CSS, o SASS. A implementação facilitou a c
 O componente de pesquisa criado, filtra os tarefas e atualiza em tempo real os resultados a cada caractere inserido.  <br/>
 Sua funcionalidade está demonstrada abaixo:
 
- <img align="center" width="640px" alt="title"  src="https://media.giphy.com/media/QZ2AKP3sqzJrjtONJa/giphy.gif" />
+ <img align="center" width="640px" alt="search"  src="https://media.giphy.com/media/QZ2AKP3sqzJrjtONJa/giphy.gif" />
 
 ---
 <br/>
@@ -79,7 +84,7 @@ Sua funcionalidade está demonstrada abaixo:
 ## Responsividade
 A aplicação conta com responsividade para dispositivos móveis, conforme demostrado: 
 
- <img align="center" alt="title"  src="https://media.giphy.com/media/NAOBx5JbVDM86JbPmi/giphy.gif" />
+ <img align="center" alt="mobile"  src="https://media.giphy.com/media/NAOBx5JbVDM86JbPmi/giphy.gif" />
 
 ---
 <br/>
