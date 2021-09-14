@@ -29,7 +29,7 @@ Para isso, a aplicação é capaz de comunicar-se com a API e realizar as seguin
 A aplicação é capaz de renderizar todas as tarefas na Home Page para o usuário, aravés da conexão com a API.
 
  #### Inlcuir uma nova tarefa:
-Novas tareas podem ser criadas,através de um menu. Onde o usuário deve inserir um título e uma descição opcional. <br/>
+Novas tareas podem ser criadas através de um menu. Onde o usuário deve inserir um título e uma descição opcional. <br/>
 A tarefa é enviada para o back-end através do método POST.
 
  #### Remover uma tarefa:
@@ -38,7 +38,7 @@ Cada tarefa contém um ID de identificação único, através do envio desse par
 
  #### Editar uma tarefa:
 O usuário é capaz de alterar o título, descição ou situação da tarefa (completa ou incompleta). <br/>
-Para a alteração é necessário enviar o ID de identificação da tarefa, título, descrição e situação, com o método PUT, a aplicação é capaz de reaizar as alterações e renderizar a tarefa atualizada.
+Para a alteração é necessário enviar o ID de identificação da tarefa, título, descrição e situação, com o método PUT, a aplicação é capaz de realizar as alterações e renderizar a tarefa atualizada.
 
 ---
 <br/>
