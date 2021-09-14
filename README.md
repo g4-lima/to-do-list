@@ -49,7 +49,7 @@ Para a alteração é necessário enviar o ID de identificação da tarefa, tít
 A linguagem tipada foi utilizada para a criação de toda a aplicação.
 
  #### Next.js
-A aplicação utiliza o Server Side Rendering, para isso foi utilizada a ferramenta Next.js
+A aplicação utiliza o Server Side Rendering, para isso foi utilizada a ferramenta Next.js.
 
  #### Redux toolkit
 Para o gerenciamento de estados dos componentes, foi utilizado o Redux toolkit. Uma ferramenta criada pelo Redux, que torna a sua implemetação mais simples no projeto. <br/>
