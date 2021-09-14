@@ -19,13 +19,14 @@ Projeto com a função de criar uma lista de tarefas. <br/>
 Para isso, a aplicação é capaz de comunicar-se com a API e realizar as seguintes funcionalidades:
 
  #### Listar as tarefas:
-A aplicação se conecta a API e através do método GET, consegue listas todas as tarefas.
+A aplicação se conecta a API e através do método GET, consegue renderizar todas as tarefas na Home Page para o usuário.
 
  #### Inlcuir uma nova tarefa:
-Através do método POST, uma nova tarefa pode ser criada. <br/>
-Contendo um títlo e uma descição opcional.
+Novas tareas podem ser criadas,através de um menu. Onde o usuário deve inserir um título e uma descição opcional. <br/>
+A tarefa é enviada para o back-end através do método POST.
 
  #### Remover uma tarefa:
+O usuário pode clicar na opção: Remover tarefa - disponível nas opções em todas as caixas de tarefa. <br/>
 Cada tarefa contém um ID de identificação único, através do envio desse parâmetro com o método DELETE, a aplicação pode realizar a remoção de uma tarefa.
 
  #### Editar uma tarefa:
@@ -44,7 +45,7 @@ A linguagem tipada foi utilizada para a criação de toda a aplicação.
 A aplicação utiliza o Server Side Rendering, para isso foi utilizada a ferramenta Next.js
 
  #### Redux toolkit
-Para o gerenciamento de estados dos componentes, foi utilizado o Redux toolkit, uma ferramenta criada pelo Redux que torna a implemetação mais simples no projeto. <br/>
+Para o gerenciamento de estados dos componentes, foi utilizado o Redux toolkit. Uma ferramenta criada pelo Redux, que torna a sua implemetação mais simples no projeto. <br/>
 Durante a implementação, ocorreram algumas dificuldades com relação as tipagens do Redux, tais erros foram resolvidos com pesquisa nas documentações disponíveis.
 
  #### SASS
@@ -86,13 +87,14 @@ A aplicação conta com responsividade para dispositivos móveis, conforme demos
 $ yarn
 ```
 
-### Rodar Web - modo desenvolvedor
+#### Rodar Web - Modo Desenvolvedor
 
 ```sh
 $ yarn dev
 ```
-#### Deploy
+### Deploy
 Para teste das funcionalidade, a aplicação está hospedada na Vercel.<br/>
 Pode ser acessada através do link:<br/>
+<br/>
 https://to-do-list-indol.vercel.app/
 
