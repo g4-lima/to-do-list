@@ -1,34 +1,100 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Lista de Tarefas
 
-## Getting Started
+<br/>
 
-First, run the development server:
+<p align="center">
+  <a href="#Funcionalidades">Funcionalidades</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#Tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#Validação">Validação</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#Pesquisa">Pesquisa</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#Responsividade">Responsividade</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#Rodar">Rodar Projeto</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</p>
 
-```bash
-npm run dev
-# or
-yarn dev
+<br/>
+
+## Funcionalidades
+
+Projeto com a função de criar uma lista de tarefas. <br/>
+Para isso, a aplicação é capaz de comunicar-se com a API e realizar as seguintes funcionalidades:
+
+ #### Listar as tarefas:
+A aplicação é capaz de renderizar todas as tarefas na Home Page para o usuário, aravés da conexão com a API.
+
+ #### Inlcuir uma nova tarefa:
+Novas tareas podem ser criadas,através de um menu. Onde o usuário deve inserir um título e uma descição opcional. <br/>
+A tarefa é enviada para o back-end através do método POST.
+
+ #### Remover uma tarefa:
+O usuário pode clicar na opção: Remover tarefa - disponível nas opções em todas as caixas de tarefa. <br/>
+Cada tarefa contém um ID de identificação único, através do envio desse parâmetro com o método DELETE, a aplicação pode realizar a remoção de uma tarefa.
+
+ #### Editar uma tarefa:
+O usuário é capaz de alterar o título, descição ou situação da tarefa (completa ou incompleta). <br/>
+Para a alteração é necessário enviar o ID de identificação da tarefa, título, descrição e situação, com o método PUT, a aplicação é capaz de reaizar as alterações e renderizar a tarefa atualizada.
+
+---
+<br/>
+
+## Tecnologias
+
+ #### Typescript
+A linguagem tipada foi utilizada para a criação de toda a aplicação.
+
+ #### Next.js
+A aplicação utiliza o Server Side Rendering, para isso foi utilizada a ferramenta Next.js
+
+ #### Redux toolkit
+Para o gerenciamento de estados dos componentes, foi utilizado o Redux toolkit. Uma ferramenta criada pelo Redux, que torna a sua implemetação mais simples no projeto. <br/>
+Durante a implementação, ocorreram algumas dificuldades com relação as tipagens do Redux, tais erros foram resolvidos com pesquisa nas documentações disponíveis.
+
+ #### SASS
+Foi utilizado o pré-processador de CSS, o SASS. A implementação facilitou a criação da aplicação, pois adiciona algumas funcionalidades, como o encapsulamento das regras de estilo, o que melhora bastante a visualização do projeto.
+
+---
+<br/>
+
+## Validação
+
+ #### YUP
+ Para a validação dos inputs e tratamento de erros, foi utilizada a biblioteca YUP. <br/>
+ Uma biblioteca de simples implementação, que segue as regras da documentação do back-end para a validação, conforme mostrado abaixo:
+ 
+---
+<br/>
+
+## Pesquisa
+O componente de pesquisa criado, filtra os tarefas e atualiza em tempo real os resultados a cada caractere inserido.  <br/>
+Sua funcionalidade está demosntrada abaixo:
+
+---
+<br/>
+
+## Responsividade
+A aplicação conta com responsividade para dispositivos móveis, conforme demostrado: 
+
+---
+<br/>
+
+## Rodar Projeto
+  #### Requerimento
+
+- [Yarn](https://classic.yarnpkg.com/)
+
+**Instalção das dependências**
+
+```sh
+$ yarn
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#### Rodar Web - Modo Desenvolvedor
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```sh
+$ yarn dev
+```
+### Deploy
+Para testes das funcionalidades, a aplicação está hospedada na Vercel.<br/>
+E pode ser acessada através do link:<br/>
+<br/>
+https://to-do-list-indol.vercel.app/
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
