@@ -19,7 +19,7 @@ Projeto com a função de criar uma lista de tarefas. <br/>
 Para isso, a aplicação é capaz de comunicar-se com a API e realizar as seguintes funcionalidades:
 
  #### Listar as tarefas:
-A aplicação se conecta a API e através do método GET, consegue renderizar todas as tarefas na Home Page para o usuário.
+A aplicação é capaz de renderizar todas as tarefas na Home Page para o usuário, aravés da conexão com a API.
 
  #### Inlcuir uma nova tarefa:
 Novas tareas podem ser criadas,através de um menu. Onde o usuário deve inserir um título e uma descição opcional. <br/>
