@@ -69,7 +69,7 @@ Foi utilizado o pré-processador de CSS, o SASS. A implementação facilitou a c
 
 ## Pesquisa
 O componente de pesquisa criado, filtra os tarefas e atualiza em tempo real os resultados a cada caractere inserido.  <br/>
-Sua funcionalidade está demosntrada abaixo:
+Sua funcionalidade está demonstrada abaixo:
 
  <img align="center" width="640px" alt="title"  src="https://media.giphy.com/media/QZ2AKP3sqzJrjtONJa/giphy.gif" />
 
@@ -78,6 +78,8 @@ Sua funcionalidade está demosntrada abaixo:
 
 ## Responsividade
 A aplicação conta com responsividade para dispositivos móveis, conforme demostrado: 
+
+ <img align="center" alt="title"  src="https://media.giphy.com/media/NAOBx5JbVDM86JbPmi/giphy.gif" />
 
 ---
 <br/>
