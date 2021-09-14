@@ -5,6 +5,7 @@ import styles from './styles.module.scss';
 
 const Sidebar = () => {
     return (
+        <>
         <div className={styles.container}>
             <div className={styles.content}>
                 <div className={styles.info}>
@@ -31,6 +32,10 @@ const Sidebar = () => {
                 </nav>
             </div>
         </div>
+        <div className={styles.bottomBar}>
+            <p>Desafio desenvolvido por Gabriel Lima - gabastos.lima@gmail.com</p>
+        </div>
+        </>
     );
 };
 
