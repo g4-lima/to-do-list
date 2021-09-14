@@ -68,11 +68,11 @@ Foi utilizado o pré-processador de CSS, o SASS. A implementação facilitou a c
  Uma biblioteca de simples implementação, que segue as regras da documentação do back-end para a validação, conforme mostrado abaixo:
  
  
- <img align="left" alt="no-name" width="240px" src="https://media.giphy.com/media/lUTLzHQZZliiYsf1Mk/giphy.gif" />
+ <img align="left" alt="no-name" src="https://media.giphy.com/media/lUTLzHQZZliiYsf1Mk/giphy.gif" />
  
- <img align="center" alt="title" width="240px" src="https://media.giphy.com/media/nSoWhSPXaF5q7kDZI7/giphy.gif" />
+ <img align="center" alt="title" src="https://media.giphy.com/media/nSoWhSPXaF5q7kDZI7/giphy.gif" />
  
- <img align="center" alt="description" width="240px" src="https://media.giphy.com/media/qsgIatujhzouxG5q0O/giphy.gif" />
+ <img align="center" alt="description" src="https://media.giphy.com/media/qsgIatujhzouxG5q0O/giphy.gif" />
  
  
 ---
