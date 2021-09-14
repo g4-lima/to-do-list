@@ -71,6 +71,8 @@ Foi utilizado o pré-processador de CSS, o SASS. A implementação facilitou a c
 O componente de pesquisa criado, filtra os tarefas e atualiza em tempo real os resultados a cada caractere inserido.  <br/>
 Sua funcionalidade está demosntrada abaixo:
 
+ <img align="center" alt="title"  src="https://media.giphy.com/media/QZ2AKP3sqzJrjtONJa/giphy.gif" />
+
 ---
 <br/>
 
