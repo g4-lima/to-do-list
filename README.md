@@ -60,7 +60,7 @@ Foi utilizado o pré-processador de CSS, o SASS. A implementação facilitou a c
  Para a validação dos inputs e tratamento de erros, foi utilizada a biblioteca YUP. <br/>
  Uma biblioteca de simples implementação, que segue as regras da documentação do back-end para a validação, conforme mostrado abaixo:
  
- <img align="left" alt="no-name" width="200px" src="https://media.giphy.com/media/lUTLzHQZZliiYsf1Mk/giphy.gif" />
+ <img align="center" alt="no-name" src="https://media.giphy.com/media/lUTLzHQZZliiYsf1Mk/giphy.gif" />
  <img align="center" alt="title"  src="https://media.giphy.com/media/nSoWhSPXaF5q7kDZI7/giphy.gif" />
  <img align="center" alt="description"  src="https://media.giphy.com/media/qsgIatujhzouxG5q0O/giphy.gif" />
  
