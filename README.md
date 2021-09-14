@@ -93,8 +93,8 @@ $ yarn
 $ yarn dev
 ```
 ### Deploy
-Para teste das funcionalidade, a aplicação está hospedada na Vercel.<br/>
-Pode ser acessada através do link:<br/>
+Para testes das funcionalidades, a aplicação está hospedada na Vercel.<br/>
+E pode ser acessada através do link:<br/>
 <br/>
 https://to-do-list-indol.vercel.app/
 
